@@ -1,0 +1,9 @@
+# --- requirements.txt ---
+
+requests
+beautifulsoup4
+lxml
+discord.py
+python-dotenv
+
+# --- END OF requirements.txt ---
