@@ -1,5 +1,5 @@
 # requirements.txt
-
+arxiv
 discord.py>=2.0.0 # Requires Python 3.8+ for discord.py v2
 requests>=2.25.0
 beautifulsoup4>=4.9.0
