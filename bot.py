@@ -237,6 +237,8 @@ async def on_ready():
     print(f"--- Logged in as {client.user} ---")
 
 @client.tree.command(name="help", description="Shows information about the bot's commands.")
+@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
+@app_commands.user_install()
 async def help_command(interaction: discord.Interaction):
     embed = discord.Embed(title="Bot Help & Commands", color=discord.Color.from_rgb(70, 130, 180))
     embed.add_field(name="/findbook `query` `[preferred_format]`", value="Searches the digital library for a book by title.", inline=False)
@@ -245,6 +247,8 @@ async def help_command(interaction: discord.Interaction):
     await interaction.response.send_message(embed=embed, ephemeral=True)
 
 @client.tree.command(name="findbook", description="Search for a book from the digital library.")
+@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
+@app_commands.user_install()
 async def findbook(interaction: discord.Interaction, query: str, preferred_format: str = None):
     await interaction.response.defer()
     view = BookSearchView(query=query, preferred_format=preferred_format.lower().strip() if preferred_format else None, author=interaction.user)
@@ -253,6 +257,8 @@ async def findbook(interaction: discord.Interaction, query: str, preferred_forma
     else: await interaction.followup.send(embed=embed, view=view)
 
 @client.tree.command(name="findpapers", description="Search for an academic paper on arXiv.org.")
+@app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
+@app_commands.user_install()
 async def findpapers(interaction: discord.Interaction, query: str):
     await interaction.response.defer()
     try:
